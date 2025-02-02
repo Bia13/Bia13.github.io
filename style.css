@@ -1,0 +1,140 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f9;
+}
+
+.title{
+    font-family: "Poppins";
+    font-weight: bold;
+    padding-left:2vw;
+    font-size:1.5vw;
+}
+
+.links{
+    display: flex;
+    padding-right: 2vw;
+    gap:3vw;
+    flex-wrap: wrap;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5vw 0vw;
+    height: 3vw;
+    color: #fff;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    transition: color 0.3s;
+    position: relative;
+}
+
+.navbar a::after{
+    content: ""; 
+    position: absolute;
+    left: 0;
+    bottom: -3px; 
+    width: 0;
+    height: 2px; 
+    background-color: #ffffff; 
+    transition: width 0.3s;
+}
+.navbar a:hover::after {
+    width: 100%; 
+}
+
+.navbar .brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-left: 1rem;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-width: 35vw;
+
+}
+
+.img-content {
+    padding-top: 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-content img {
+    border-radius: 15px;
+    width: 25vw;
+    margin-right: 20px; 
+    box-shadow: 000 4px 6px rgba(0, 0, 0, 0.1);
+}
+/* From Uiverse.io by aguerquin */ 
+.button-icon {
+    display: flex;
+    border: 3px #fff solid;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+  }
+  
+  .icon {
+    background-color: #fff;
+    padding: 10px 10px 5px 10px;
+  }
+  
+  .icon svg {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .cube {
+    transition: all 0.4s;
+    transform-style: preserve-3d;
+    width: 200px;
+    height: 20px;
+  }
+  
+  .button-icon:hover {
+    border-color: #ff98a2;
+  }
+  
+  .button-icon:hover .cube {
+    transform: rotateX(90deg);
+  }
+  
+  .side {
+    position: absolute;
+    height: 47px;
+    width: 200px;
+    display: flex;
+    font-size: 0.8em;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+  }
+  
+  .top {
+    background: #ff98a2;
+    color: #fff;
+    transform: rotateX(-90deg) translate3d(0, 13.5px, 2em);
+  }
+  
+  .front {
+    background: #222229;
+    color: #fff;
+    transform: translate3d(0, 0, 1em);
+  }
+  
