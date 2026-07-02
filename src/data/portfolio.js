@@ -174,6 +174,45 @@ Nos últimos projetos liderei a criação de plataformas SaaS, ferramentas para 
       },
     },
   ],
+
+  graphicDesignGallery: [
+    {
+      image: "/projects/softfacil_1.png",
+    },
+    {
+      image: "/projects/softfacil_2.png",
+    },
+    {
+      image: "/projects/softfacil_3.png",
+    },
+        {
+      image: "/projects/rheon_1.png",
+    },
+        {
+      image: "/projects/rheon_2.png",
+    },
+        {
+      image: "/projects/rheon_3.png",
+    },
+    {
+      image: "/projects/reals_1.png",
+    },
+        {
+      image: "/projects/reals_2.png",
+    },
+        {
+      image: "/projects/reals_3.png",
+    },
+        {
+      image: "/projects/reals_4.png",
+    },
+        {
+      image: "/projects/reals_5.png",
+    },
+        {
+      image: "/projects/big.png",
+    },
+  ],
 };
 
 export default portfolio;
