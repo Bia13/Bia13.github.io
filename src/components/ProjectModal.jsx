@@ -1,98 +1,10 @@
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { X, ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
+﻿import { useEffect } from "react";
+import { motion } from "framer-motion";
+import { ArrowLeft, ExternalLink, Sparkles } from "lucide-react";
+import { useNavigate, useParams } from "react-router-dom";
+import portfolio from "../data/portfolio";
 
 const EASE = [0.22, 1, 0.36, 1];
-
-function NavButton({ direction, onClick }) {
-  return (
-    <button
-      onClick={onClick}
-      aria-label={direction === "left" ? "Imagem anterior" : "Próxima imagem"}
-      className="
-        absolute top-1/2 -translate-y-1/2
-        flex h-9 w-9 items-center justify-center
-        rounded-full border border-white/15 bg-zinc-900/80 text-white
-        backdrop-blur-sm transition-all duration-200
-        opacity-0 group-hover:opacity-100
-        hover:bg-zinc-800 hover:border-white/30
-        active:scale-95
-      "
-      style={{ [direction === "left" ? "left" : "right"]: "1rem" }}
-    >
-      {direction === "left" ? (
-        <ArrowLeft className="h-4 w-4" />
-      ) : (
-        <ArrowRight className="h-4 w-4" />
-      )}
-    </button>
-  );
-}
-
-function Dots({ count, active, onSelect }) {
-  if (count <= 1) return null;
-
-  return (
-    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
-      {Array.from({ length: count }).map((_, i) => (
-        <button
-          key={i}
-          onClick={() => onSelect(i)}
-          aria-label={`Imagem ${i + 1}`}
-          className={`h-1.5 rounded-full transition-all duration-300 ${
-            i === active ? "w-5 bg-white" : "w-1.5 bg-white/30"
-          }`}
-        />
-      ))}
-    </div>
-  );
-}
-
-function ImageCarousel({ images }) {
-  const [index, setIndex] = useState(0);
-  const [direction, setDirection] = useState(1);
-
-  const go = (next) => {
-    setDirection(next > index ? 1 : -1);
-    setIndex((next + images.length) % images.length);
-  };
-
-  return (
-    <div className="relative h-64 md:h-full w-full overflow-hidden bg-zinc-900 group md:rounded-l-3xl">
-      <AnimatePresence mode="popLayout" custom={direction}>
-        <motion.img
-          key={index}
-          src={images[index]}
-          alt={`Imagem ${index + 1}`}
-          custom={direction}
-          variants={{
-            enter: (d) => ({ x: d * 40, opacity: 0 }),
-            center: { x: 0, opacity: 1 },
-            exit:  (d) => ({ x: d * -40, opacity: 0 }),
-          }}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          transition={{ duration: 0.35, ease: EASE }}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-      </AnimatePresence>
-
-      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-
-      {images.length > 1 && (
-        <>
-          <NavButton direction="left"  onClick={() => go(index - 1)} />
-          <NavButton direction="right" onClick={() => go(index + 1)} />
-          <Dots count={images.length} active={index} onSelect={go} />
-          <div className="absolute top-4 right-4 rounded-full border border-white/10 bg-black/40 px-2.5 py-1 text-[11px] text-white/60 backdrop-blur-sm">
-            {index + 1} / {images.length}
-          </div>
-        </>
-      )}
-    </div>
-  );
-}
 
 function Tag({ label }) {
   return (
@@ -106,7 +18,7 @@ function Section({ title, children }) {
   if (!children) return null;
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-2 rounded-2xl border border-white/8 bg-white/[0.03] p-5">
       <h4
         style={{ fontFamily: "'DM Sans', sans-serif" }}
         className="text-[11px] font-medium tracking-[0.18em] uppercase text-zinc-500"
@@ -123,84 +35,38 @@ function Section({ title, children }) {
   );
 }
 
-export default function ProjectModal({ project, onClose }) {
+export default function ProjectModal() {
+  const { slug } = useParams();
+  const navigate = useNavigate();
+
+  const project = portfolio.projects.find((item) => item.slug === slug);
+
   useEffect(() => {
-    if (!project) return;
-
-    document.body.style.overflow = "hidden";
-
-    const onKeyDown = (e) => {
-      if (e.key === "Escape") onClose();
-    };
-
-    window.addEventListener("keydown", onKeyDown);
-
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", onKeyDown);
-    };
-  }, [project, onClose]);
+    document.title = project ? `${project.title} | Beatriz Dantas` : "Beatriz Dantas";
+  }, [project]);
 
   if (!project) return null;
 
-  const images = project.details?.images?.length
-    ? project.details.images
-    : [project.image];
+  const images = project.details?.images?.length ? project.details.images : [project.image];
 
   return (
-    <AnimatePresence>
-      <motion.div
-        className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-black/75 backdrop-blur-xl"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.25 }}
-        onClick={onClose}
-      >
-        <motion.div
-          className="
-            relative w-full max-w-6xl
-            h-[90vh] md:h-[82vh]
-            flex flex-col md:flex-row
-            overflow-hidden
-            rounded-3xl
-            border border-white/8
-            bg-zinc-950
-            shadow-[0_48px_120px_rgba(0,0,0,0.8)]
-          "
-          initial={{ scale: 0.97, y: 32, opacity: 0 }}
-          animate={{ scale: 1,    y: 0,  opacity: 1 }}
-          exit={{    scale: 0.97, y: 32, opacity: 0 }}
-          transition={{ type: "spring", stiffness: 260, damping: 28 }}
-          onClick={(e) => e.stopPropagation()}
+    <div className="min-h-screen bg-zinc-950 text-white">
+      <div className="mx-auto flex max-w-7xl flex-col px-6 py-8 md:px-8 lg:px-12">
+        <button
+          onClick={() => navigate("/")}
+          className="inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-zinc-300 transition hover:bg-white/10"
         >
-          {/* Close */}
-          <button
-            onClick={onClose}
-            aria-label="Fechar"
-            className="
-              absolute top-4 right-4 z-20
-              flex h-8 w-8 items-center justify-center
-              rounded-full border border-white/10 bg-zinc-900/80
-              text-zinc-400 backdrop-blur-sm
-              transition-all duration-200
-              hover:bg-zinc-800 hover:text-white hover:border-white/20
-              active:scale-95
-            "
-          >
-            <X className="h-4 w-4" />
-          </button>
+          <ArrowLeft className="h-4 w-4" />
+          Voltar para projetos
+        </button>
 
-          {/* Left — carousel */}
-          <div className="md:w-1/2 flex-shrink-0">
-            <ImageCarousel images={images} />
-          </div>
-
-          {/* Divider */}
-          <div className="hidden md:block w-px bg-white/[0.06] flex-shrink-0" />
-
-          {/* Right — content */}
-          <div className="flex-1 overflow-y-auto p-6 md:p-10 space-y-8">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: EASE }}
+          className="mt-8 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]"
+        >
+          <div className="space-y-6">
             <div>
               <span
                 style={{ fontFamily: "'DM Sans', sans-serif" }}
@@ -208,26 +74,62 @@ export default function ProjectModal({ project, onClose }) {
               >
                 {project.category}
               </span>
-
-              <h2
+              <h1
                 style={{ fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.05 }}
-                className="mt-3 text-4xl md:text-5xl font-semibold text-white"
+                className="mt-3 text-4xl font-semibold text-white md:text-5xl"
               >
                 {project.title}
-              </h2>
-
+              </h1>
               <p
                 style={{ fontFamily: "'DM Sans', sans-serif" }}
-                className="mt-4 text-[0.9375rem] leading-relaxed text-zinc-400 font-light"
+                className="mt-4 max-w-2xl text-[0.95rem] leading-relaxed text-zinc-400"
               >
                 {project.description}
               </p>
             </div>
 
-            <div className="h-px bg-white/[0.06]" />
+            <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-900">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="h-[320px] w-full object-cover md:h-[420px]"
+              />
+            </div>
+          </div>
 
-            <div className="space-y-6">
+          <div className="space-y-5 rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 md:p-8">
+            <div className="flex items-center gap-2 text-zinc-300">
+              <Sparkles className="h-4 w-4" />
+              <span style={{ fontFamily: "'DM Sans', sans-serif" }} className="text-[11px] font-medium uppercase tracking-[0.18em]">
+                Impacto e contexto
+              </span>
+            </div>
+
+            {project.details?.workReduction && (
+              <div className="rounded-2xl border border-emerald-400/20 bg-emerald-400/10 p-4">
+                <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-emerald-300">
+                  Redução de trabalho
+                </p>
+                <p className="mt-2 text-lg text-white">{project.details.workReduction}</p>
+              </div>
+            )}
+
+            {project.details?.metrics?.length > 0 && (
+              <div className="grid gap-3 sm:grid-cols-2">
+                {project.details.metrics.map((metric) => (
+                  <div key={metric.label} className="rounded-2xl border border-white/10 bg-zinc-900/70 p-4">
+                    <p className="text-[11px] uppercase tracking-[0.2em] text-zinc-500">{metric.label}</p>
+                    <p className="mt-2 text-2xl font-semibold text-white">{metric.value}</p>
+                    <p className="mt-1 text-sm text-zinc-400">{metric.description}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <div className="space-y-3">
               <Section title="Overview">{project.details?.overview}</Section>
+              <Section title="Problema">{project.details?.problem}</Section>
+              <Section title="Solução">{project.details?.solution}</Section>
               <Section title="Meu papel">{project.details?.role}</Section>
             </div>
 
@@ -240,8 +142,8 @@ export default function ProjectModal({ project, onClose }) {
                   Tecnologias & entregas
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {project.highlights.map((h) => (
-                    <Tag key={h} label={h} />
+                  {project.highlights.map((item) => (
+                    <Tag key={item} label={item} />
                   ))}
                 </div>
               </div>
@@ -252,23 +154,38 @@ export default function ProjectModal({ project, onClose }) {
                 href={project.details.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ fontFamily: "'DM Sans', sans-serif" }}
-                className="
-                  inline-flex items-center gap-2
-                  rounded-full border border-white/15 bg-white/5
-                  px-5 py-2.5 text-sm font-medium text-white
-                  transition-all duration-200
-                  hover:bg-white/10 hover:border-white/25 hover:scale-[1.02]
-                  active:scale-100
-                "
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-white/10"
               >
                 Ver projeto
-                <ExternalLink className="h-3.5 w-3.5" />
+                <ExternalLink className="h-4 w-4" />
               </a>
             )}
           </div>
         </motion.div>
-      </motion.div>
-    </AnimatePresence>
+
+        <div className="mt-10 space-y-6">
+          <div className="flex items-center gap-3">
+            <div className="h-px w-12 bg-white/20" />
+            <p style={{ fontFamily: "'DM Sans', sans-serif" }} className="text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-500">
+              Telas e fluxos
+            </p>
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-2">
+            {images.map((image, index) => (
+              <motion.div
+                key={`${project.slug}-${index}`}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.06 }}
+                className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-zinc-900"
+              >
+                <img src={image} alt={`${project.title} - tela ${index + 1}`} className="h-full w-full object-cover" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
