@@ -86,6 +86,37 @@ Nos últimos projetos liderei a criação de plataformas SaaS, ferramentas para 
           "/projects/nest-ops-3.png",
         ],
       },
+      translations: {
+        en: {
+          title: "Nest Ops",
+          category: "Internal Operations Platform",
+          description:
+            "Internal operations system for CRM, dashboards and team workflow management.",
+          highlights: ["CRM", "Dashboards", "UX/UI", "Data Analytics", "Desktop"],
+          details: {
+            overview:
+              "Internal operations solution for teams combining analytical dashboards, CRM and follow-up flows to make data analysis and decision-making easier. The main focus was transforming dispersed information into a more objective interface for everyday operations.",
+            problem:
+              "The team had to deal with fragmented data and many screens to track customers and metrics, which reduced response speed and clarity.",
+            solution:
+              "I structured a more cohesive desktop interface with clear dashboards and CRM workflows that made operations more predictable and less reliant on improvised processes.",
+            role:
+              "UX/UI and dashboard/flow structuring focused on productivity and operational clarity.",
+            workReduction:
+              "Eliminated much of the manual consultation overhead and consolidated tracking into a single environment.",
+            metrics: [
+              {
+                label: "Operational insight",
+                description: "more context in one screen",
+              },
+              {
+                label: "Analysis time",
+                description: "time to read indicators",
+              },
+            ],
+          },
+        },
+      },
     },
       {
       slug: "b2c-sales-plus",

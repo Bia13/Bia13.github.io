@@ -1,0 +1,217 @@
+export const translations = {
+  pt: {
+    nav: {
+      home: "Início",
+      about: "Sobre",
+      projects: "Projetos",
+      gallery: "Galeria",
+      experience: "Experiência",
+      skills: "Skills",
+      contact: "Contato",
+    },
+    hero: {
+      available: "Disponível para projetos",
+      description:
+        "Transformando processos complexos em produtos digitais intuitivos, escaláveis e orientados a resultados.",
+      ctaProjects: "Ver Projetos",
+      behance: "Behance",
+      stats: [
+        { value: "5+", label: "anos de experiência" },
+        { value: "35+", label: "projetos entregues" },
+        { value: "B2B", label: "SaaS & Marketplaces" },
+      ],
+    },
+    about: {
+      label: "Sobre",
+      titleLine1: "Design, produto",
+      titleLine2: "e tecnologia.",
+      bio1:
+        "Product Designer com experiência em SaaS, marketplaces e produtos digitais B2B. Atuo de forma end-to-end, desde discovery e pesquisa com usuários até design systems, prototipação e implementação front-end.",
+      bio2:
+        "Ao longo da minha trajetória participei da construção de plataformas operacionais, ferramentas para marketplaces, soluções com inteligência artificial e sistemas escaláveis, sempre buscando equilibrar objetivos de negócio, experiência do usuário e viabilidade técnica.",
+      categories: {
+        tech: "Tecnologia & interfaces",
+        design: "Design & criação",
+        languages: "Idiomas",
+      },
+      levelLabels: {
+        nativo: "Nativo",
+        profissional: "Profissional",
+        avançado: "Avançado",
+        intermediário: "Intermediário",
+        básico: "Básico",
+      },
+    },
+    projects: {
+      label: "Projetos",
+      titleLine1: "Produtos que",
+      titleLine2: "construí.",
+      detailsButton: "Ver detalhes",
+    },
+    gallery: {
+      label: "Galeria",
+      titleLine1: "Artes de",
+      titleLine2: "design gráfico.",
+      previous: "Arte anterior",
+      next: "Próxima arte",
+    },
+    experience: {
+      label: "Experiência",
+      titleLine1: "Minha",
+      titleLine2: "trajetória.",
+      currentLabel: "Atual",
+    },
+    skills: {
+      label: "Skills",
+      titleLine1: "Ferramentas e",
+      titleLine2:
+        "tecnologias que uso no meu fluxo de trabalho — do conceito à entrega.",
+      categories: {
+        design: "Design",
+        dev: "Dev",
+        workflow: "Workflow",
+      },
+      levelLabels: {
+        nativo: "Nativo",
+        profissional: "Profissional",
+        avançado: "Avançado",
+        intermediário: "Intermediário",
+        básico: "Básico",
+      },
+    },
+    contact: {
+      label: "Contato",
+      titleLine1: "Vamos construir",
+      titleLine2: "algo incrível.",
+      description:
+        "Aberta para oportunidades em Product Design, UX/UI e Front-end. Me mande uma mensagem ou confira meus perfis profissionais abaixo.",
+      linkedin: "LinkedIn",
+      email: "Email",
+      github: "Github",
+      behance: "Behance",
+      backToTop: "Voltar ao topo",
+    },
+    projectModal: {
+      back: "Voltar para projetos",
+      impact: "Impacto e contexto",
+      reduction: "Redução de trabalho",
+      technologies: "Tecnologias & entregas",
+      viewProject: "Ver projeto",
+      overview: "Visão geral",
+      problem: "Problema",
+      solution: "Solução",
+      role: "Meu papel",
+      screens: "Telas e fluxos",
+      category: "Categoria",
+      screenAlt: "tela",
+    },
+  },
+  en: {
+    nav: {
+      home: "Home",
+      about: "About",
+      projects: "Projects",
+      gallery: "Gallery",
+      experience: "Experience",
+      skills: "Skills",
+      contact: "Contact",
+    },
+    hero: {
+      available: "Available for new projects",
+      description:
+        "Turning complex processes into intuitive, scalable and results-driven digital products.",
+      ctaProjects: "View Projects",
+      behance: "Behance",
+      stats: [
+        { value: "5+", label: "years of experience" },
+        { value: "35+", label: "projects delivered" },
+        { value: "B2B", label: "SaaS & Marketplaces" },
+      ],
+      imageError: "hero.png not found",
+    },
+    about: {
+      label: "About",
+      titleLine1: "Design, product",
+      titleLine2: "and technology.",
+      bio1:
+        "Product Designer with experience in SaaS, marketplaces and B2B digital products. I work end-to-end, from discovery and user research to design systems, prototyping and front-end implementation.",
+      bio2:
+        "Throughout my journey I have helped build operational platforms, marketplace tools, AI-powered solutions and scalable systems, always balancing business goals, user experience and technical feasibility.",
+      categories: {
+        tech: "Technology & interfaces",
+        design: "Design & creation",
+        languages: "Languages",
+      },
+      levelLabels: {
+        nativo: "Native",
+        profissional: "Professional",
+        avançado: "Advanced",
+        intermediário: "Intermediate",
+        básico: "Basic",
+      },
+    },
+    projects: {
+      label: "Projects",
+      titleLine1: "Products I",
+      titleLine2: "built.",
+      detailsButton: "View details",
+    },
+    gallery: {
+      label: "Gallery",
+      titleLine1: "Graphic",
+      titleLine2: "design work.",
+      previous: "Previous art",
+      next: "Next art",
+    },
+    experience: {
+      label: "Experience",
+      titleLine1: "My",
+      titleLine2: "journey.",
+      currentLabel: "Current",
+    },
+    skills: {
+      label: "Skills",
+      titleLine1: "Tools and",
+      titleLine2:
+        "technologies I use in my workflow — from concept to delivery.",
+      categories: {
+        design: "Design",
+        dev: "Dev",
+        workflow: "Workflow",
+      },
+      levelLabels: {
+        nativo: "Native",
+        profissional: "Professional",
+        avançado: "Advanced",
+        intermediário: "Intermediate",
+        básico: "Basic",
+      },
+    },
+    contact: {
+      label: "Contact",
+      titleLine1: "Let's build",
+      titleLine2: "something amazing.",
+      description:
+        "Open to Product Design, UX/UI and Front-end opportunities. Send me a message or check my professional profiles below.",
+      linkedin: "LinkedIn",
+      email: "Email",
+      github: "Github",
+      behance: "Behance",
+      backToTop: "Back to top",
+    },
+    projectModal: {
+      back: "Back to projects",
+      impact: "Impact & context",
+      reduction: "Work reduction",
+      technologies: "Technologies & deliveries",
+      viewProject: "View project",
+      overview: "Overview",
+      problem: "Problem",
+      solution: "Solution",
+      role: "My role",
+      screens: "Screens and flows",
+      category: "Category",
+      screenAlt: "screen",
+    },
+  },
+};

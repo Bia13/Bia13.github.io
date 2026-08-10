@@ -5,15 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, ArrowRight, Grape } from "lucide-react";
 import { SiFigma, SiReact, SiTailwindcss } from "react-icons/si";
 import { Layers } from "lucide-react";
+import { useLanguage } from "./LanguageContext";
 
 
 const roles = ["Product Designer", "UX Engineer", "AI Product Specialist", "Graphic Designer"];
-
-const stats = [
-  { value: "5+",  label: "anos de experiência" },
-  { value: "35+", label: "projetos entregues"   },
-  { value: "B2B", label: "SaaS & Marketplaces"  },
-];
 
 const floatingIcons = [
   { id: 1, Icon: SiFigma,       color: "#F24E1E", style: { top: "7%",    left: "5%"  }, delay: 0.0 },
@@ -35,6 +30,8 @@ const fadeUp = (delay = 0) => ({
 // ── Components ────────────────────────────────────────────────────────────────
 
 function AvailableBadge() {
+  const { t } = useLanguage();
+
   return (
     <motion.div {...fadeUp(0.1)} className="inline-flex items-center gap-2.5 mb-8">
       <span className="relative flex h-2 w-2">
@@ -45,7 +42,7 @@ function AvailableBadge() {
         style={{ fontFamily: "'DM Sans', sans-serif" }}
         className="text-xs font-medium tracking-[0.18em] uppercase text-zinc-400"
       >
-        Disponível para projetos
+        {t.hero.available}
       </span>
     </motion.div>
   );
@@ -92,19 +89,22 @@ function Headline() {
 }
 
 function Description() {
+  const { t } = useLanguage();
+
   return (
     <motion.p
       {...fadeUp(0.4)}
       style={{ fontFamily: "'DM Sans', sans-serif" }}
       className="mt-8 max-w-md text-[0.9375rem] leading-relaxed text-zinc-400 font-light"
     >
-      Transformando processos complexos em produtos digitais intuitivos,
-      escaláveis e orientados a resultados.
+      {t.hero.description}
     </motion.p>
   );
 }
 
 function CTAButtons({ onScrollTo }: { onScrollTo: (id: string) => void }) {
+  const { t } = useLanguage();
+
   return (
     <motion.div {...fadeUp(0.52)} className="flex flex-wrap gap-3 mt-10">
       <button
@@ -112,7 +112,7 @@ function CTAButtons({ onScrollTo }: { onScrollTo: (id: string) => void }) {
         className="group inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-medium text-black transition-all duration-200 hover:bg-zinc-100 hover:scale-[1.03] active:scale-100"
         style={{ fontFamily: "'DM Sans', sans-serif" }}
       >
-        Ver Projetos
+        {t.hero.ctaProjects}
         <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
       </button>
 
@@ -123,7 +123,7 @@ function CTAButtons({ onScrollTo }: { onScrollTo: (id: string) => void }) {
         className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-7 py-3 text-sm font-medium text-white backdrop-blur-sm transition-all duration-200 hover:border-white/30 hover:bg-white/10 hover:scale-[1.03] active:scale-100"
         style={{ fontFamily: "'DM Sans', sans-serif" }}
       >
-        Behance
+        {t.hero.behance}
         <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
       </a>
 
@@ -132,12 +132,14 @@ function CTAButtons({ onScrollTo }: { onScrollTo: (id: string) => void }) {
 }
 
 function StatsRow() {
+  const { t } = useLanguage();
+
   return (
     <motion.div
       {...fadeUp(0.64)}
       className="mt-12 pt-10 border-t border-white/[0.07] flex gap-10"
     >
-      {stats.map(({ value, label }) => (
+      {t.hero.stats.map(({ value, label }) => (
         <div key={label}>
           <p
             style={{ fontFamily: "'Cormorant Garamond', serif" }}

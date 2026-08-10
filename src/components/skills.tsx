@@ -3,6 +3,7 @@ import {
   SiFigma, SiCanva, SiReact, SiTypescript, SiJavascript, SiN8N, SiChatbot, SiOpenai,
   SiHtml5, SiCss, SiTailwindcss, SiGithub, SiJira, SiNotion, SiVercel, SiPosthog, SiMysql
 } from "react-icons/si";
+import { useLanguage } from "./LanguageContext";
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 
@@ -43,7 +44,7 @@ const floatingSkills = [
   { ...skills[7], style: { bottom: "6%", left: "52%"  }, delay: 1.05 },
 ];
 
-const categories = ["Design", "Dev", "Workflow"] as const;
+const categories = ["design", "dev", "workflow"] as const;
 
 // ── Sub-components ────────────────────────────────────────────────────────────
 
@@ -104,6 +105,8 @@ function FloatingOrb() {
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 export default function Skills() {
+  const { t } = useLanguage();
+
   return (
     <section id="skills" className="py-32 px-8">
       <div className="max-w-6xl mx-auto">
@@ -125,16 +128,16 @@ export default function Skills() {
             style={{ fontFamily: "'DM Sans', sans-serif" }}
             className="text-[11px] font-medium tracking-[0.18em] uppercase text-zinc-500"
           >
-            Skills
+            {t.skills.label}
           </span>
 
           <h2
             style={{ fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.0 }}
             className="mt-3 text-5xl md:text-6xl font-semibold text-white"
           >
-            Ferramentas e
+            {t.skills.titleLine1}
             <br />
-            <span className="italic font-light text-zinc-400">tecnologias.</span>
+            <span className="italic font-light text-zinc-400">{t.skills.titleLine2}</span>
           </h2>
         </motion.div>
 
@@ -166,7 +169,7 @@ export default function Skills() {
                     style={{ fontFamily: "'DM Sans', sans-serif" }}
                     className="mb-3 text-[11px] font-medium tracking-[0.18em] uppercase text-zinc-600"
                   >
-                    {cat}
+                    {t.skills.categories[cat]}
                   </motion.p>
                   <div className="grid grid-cols-2 gap-2.5">
                     {group.map((skill, i) => (

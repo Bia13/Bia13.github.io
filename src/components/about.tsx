@@ -1,15 +1,16 @@
 import { motion } from "framer-motion";
+import { useLanguage } from "./LanguageContext";
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const LEVELS = {
-  nativo:        { label: "Nativo",        dots: 5 },
-  profissional:  { label: "Profissional",  dots: 5 },
-  avançado:      { label: "Avançado",      dots: 4 },
-  intermediário: { label: "Intermediário", dots: 3 },
-  básico:        { label: "Básico",        dots: 2 },
+  nativo:        { dots: 5 },
+  profissional:  { dots: 5 },
+  avançado:      { dots: 4 },
+  intermediário: { dots: 3 },
+  básico:        { dots: 2 },
 } as const;
 
 type Level = keyof typeof LEVELS;
@@ -19,15 +20,17 @@ interface Skill {
   level: Level;
 }
 
+type CategoryLabel = "tech" | "design" | "languages";
+
 interface Category {
-  label: string;
+  label: CategoryLabel;
   color: string;
   items: Skill[];
 }
 
 const categories: Category[] = [
   {
-    label: "Tecnologia & interfaces",
+    label: "tech",
     color: "#378ADD",
     items: [
       { name: "HTML & CSS",           level: "avançado"      },
@@ -38,7 +41,7 @@ const categories: Category[] = [
     ],
   },
   {
-    label: "Design & criação",
+    label: "design",
     color: "#1D9E75",
     items: [
       { name: "Figma",       level: "profissional" },
@@ -48,7 +51,7 @@ const categories: Category[] = [
     ],
   },
   {
-    label: "Idiomas",
+    label: "languages",
     color: "#7F77DD",
     items: [
       { name: "Português", level: "nativo"       },
@@ -66,7 +69,9 @@ function SkillCard({
   color,
   index,
 }: Skill & { color: string; index: number }) {
-  const { label, dots } = LEVELS[level];
+  const { t } = useLanguage();
+  const dots = LEVELS[level].dots;
+  const label = t.about.levelLabels[level];
   const pct = dots === 5 ? "97%" : dots === 4 ? "80%" : dots === 3 ? "55%" : "25%";
 
   return (
@@ -113,6 +118,8 @@ function SkillCard({
 }
 
 function CategoryBlock({ cat, catIndex }: { cat: Category; catIndex: number }) {
+  const { t } = useLanguage();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -129,7 +136,7 @@ function CategoryBlock({ cat, catIndex }: { cat: Category; catIndex: number }) {
           style={{ fontFamily: "'DM Sans', sans-serif" }}
           className="text-[11px] font-medium tracking-[0.18em] uppercase text-zinc-500"
         >
-          {cat.label}
+          {t.about.categories[cat.label]}
         </p>
       </div>
 
@@ -150,6 +157,8 @@ function CategoryBlock({ cat, catIndex }: { cat: Category; catIndex: number }) {
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 export default function About() {
+  const { t } = useLanguage();
+
   return (
     <section id="about" className="px-8 py-32">
       <div className="max-w-5xl mx-auto">
@@ -170,16 +179,16 @@ export default function About() {
             style={{ fontFamily: "'DM Sans', sans-serif" }}
             className="text-[11px] font-medium tracking-[0.18em] uppercase text-zinc-500"
           >
-            Sobre
+            {t.about.label}
           </span>
 
           <h2
             style={{ fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.0 }}
             className="mt-3 text-5xl md:text-6xl font-semibold text-white"
           >
-            Design, produto
+            {t.about.titleLine1}
             <br />
-            <span className="italic font-light text-zinc-400">e tecnologia.</span>
+            <span className="italic font-light text-zinc-400">{t.about.titleLine2}</span>
           </h2>
         </motion.div>
 
@@ -193,10 +202,7 @@ export default function About() {
             style={{ fontFamily: "'DM Sans', sans-serif" }}
             className="text-[0.9375rem] leading-relaxed text-zinc-400 font-light"
           >
-            Product Designer com experiência em SaaS, marketplaces e produtos
-            digitais B2B. Atuo de forma end-to-end, desde discovery e pesquisa
-            com usuários até design systems, prototipação e implementação
-            front-end.
+            {t.about.bio1}
           </motion.p>
 
           {/* vertical rule */}
@@ -210,11 +216,7 @@ export default function About() {
             style={{ fontFamily: "'DM Sans', sans-serif" }}
             className="text-[0.9375rem] leading-relaxed text-zinc-400 font-light"
           >
-            Ao longo da minha trajetória participei da construção de plataformas
-            operacionais, ferramentas para marketplaces, soluções com
-            inteligência artificial e sistemas escaláveis, sempre buscando
-            equilibrar objetivos de negócio, experiência do usuário e
-            viabilidade técnica.
+            {t.about.bio2}
           </motion.p>
         </div>
 

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useLanguage } from "./LanguageContext";
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 
@@ -56,6 +57,7 @@ const experiences = [
 // ── Sub-components ────────────────────────────────────────────────────────────
 
 function TimelineDot({ current }: { current?: boolean }) {
+  const { t } = useLanguage();
   return (
     <div className="absolute left-0 top-[1.1rem] flex items-center justify-center">
       {current ? (
@@ -77,6 +79,8 @@ function ExperienceCard({
   exp: (typeof experiences)[0];
   index: number;
 }) {
+  const { t } = useLanguage();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -111,7 +115,7 @@ function ExperienceCard({
               <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/8 px-3 py-1 text-[11px] font-medium text-emerald-400"
                 style={{ fontFamily: "'DM Sans', sans-serif" }}>
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                Atual
+                {t.experience.currentLabel}
               </span>
             )}
             <span
@@ -147,6 +151,8 @@ function ExperienceCard({
 // ── Main ─────────────────────────────────────────────────────────────────────
 
 export default function Experience() {
+  const { t } = useLanguage();
+
   return (
     <section id="experience" className="py-32 px-8">
       <div className="max-w-4xl mx-auto">
@@ -168,16 +174,16 @@ export default function Experience() {
             style={{ fontFamily: "'DM Sans', sans-serif" }}
             className="text-[11px] font-medium tracking-[0.18em] uppercase text-zinc-500"
           >
-            Experiência
+            {t.experience.label}
           </span>
 
           <h2
             style={{ fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.0 }}
             className="mt-3 text-5xl md:text-6xl font-semibold text-white"
           >
-            Minha
+            {t.experience.titleLine1}
             <br />
-            <span className="italic font-light text-zinc-400">trajetória.</span>
+            <span className="italic font-light text-zinc-400">{t.experience.titleLine2}</span>
           </h2>
         </motion.div>
 

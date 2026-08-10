@@ -2,8 +2,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import portfolio from "../data/portfolio";
+import { useLanguage } from "./LanguageContext";
 
 export default function Gallery() {
+  const { t } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
   const art = portfolio.graphicDesignGallery[activeIndex];
 
@@ -33,16 +35,16 @@ export default function Gallery() {
             style={{ fontFamily: "'DM Sans', sans-serif" }}
             className="text-[11px] font-medium uppercase tracking-[0.18em] text-zinc-500"
           >
-            Galeria
+            {t.gallery.label}
           </span>
 
           <h2
             style={{ fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.0 }}
             className="mt-3 mb-16 text-5xl font-semibold text-white md:text-6xl"
           >
-            Artes de
+            {t.gallery.titleLine1}
             <br />
-            <span className="italic font-light text-zinc-400">design gráfico.</span>
+            <span className="italic font-light text-zinc-400">{t.gallery.titleLine2}</span>
           </h2>
         </motion.div>
 
@@ -54,7 +56,7 @@ export default function Gallery() {
               <button
                 onClick={goToPrevious}
                 className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:bg-white/10"
-                aria-label="Arte anterior"
+                aria-label={t.gallery.previous}
               >
                 <ArrowLeft className="h-4 w-4" />
               </button>
@@ -75,7 +77,7 @@ export default function Gallery() {
               <button
                 onClick={goToNext}
                 className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:bg-white/10"
-                aria-label="Próxima arte"
+                aria-label={t.gallery.next}
               >
                 <ArrowRight className="h-4 w-4" />
               </button>

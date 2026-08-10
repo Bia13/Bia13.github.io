@@ -2,6 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import portfolio from "../data/portfolio";
+import { useLanguage } from "./LanguageContext";
 
 type Project = {
   slug: string;
@@ -10,6 +11,46 @@ type Project = {
   image: string;
   description: string;
   highlights: string[];
+  details?: {
+    overview?: string;
+    problem?: string;
+    solution?: string;
+    role?: string;
+    workReduction?: string;
+    metrics?: { label: string; value: string; description: string }[];
+    images?: string[];
+    link?: string;
+  };
+  translations?: {
+    pt?: {
+      title?: string;
+      category?: string;
+      description?: string;
+      highlights?: string[];
+      details?: {
+        overview?: string;
+        problem?: string;
+        solution?: string;
+        role?: string;
+        workReduction?: string;
+        metrics?: { label?: string; description?: string }[];
+      };
+    };
+    en?: {
+      title?: string;
+      category?: string;
+      description?: string;
+      highlights?: string[];
+      details?: {
+        overview?: string;
+        problem?: string;
+        solution?: string;
+        role?: string;
+        workReduction?: string;
+        metrics?: { label?: string; description?: string }[];
+      };
+    };
+  };
 };
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -34,6 +75,14 @@ function ProjectCard({
   index: number;
   onOpen: () => void;
 }) {
+  const { t, locale } = useLanguage();
+  const localeKey = locale === "en" ? "en" : "pt";
+  const localeProject = project.translations?.[localeKey] || project;
+  const cardTitle = localeProject.title || project.title;
+  const cardCategory = localeProject.category || project.category;
+  const cardDescription = localeProject.description || project.description;
+  const cardHighlights = localeProject.highlights || project.highlights;
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 32 }}
@@ -44,7 +93,11 @@ function ProjectCard({
       role="button"
       tabIndex={0}
       onKeyDown={(e) => e.key === "Enter" && onOpen()}
-      aria-label={`Ver detalhes de ${project.title}`}
+      aria-label={
+        locale === "en"
+          ? `View details of ${cardTitle}`
+          : `Ver detalhes de ${cardTitle}`
+      }
       className="
         group relative overflow-hidden
         rounded-3xl border border-white/8 bg-zinc-900
@@ -64,7 +117,7 @@ function ProjectCard({
             style={{ fontFamily: "'DM Sans', sans-serif" }}
             className="inline-flex items-center rounded-full border border-white/10 bg-black/50 px-3 py-1 text-[11px] font-medium tracking-[0.15em] uppercase text-zinc-400 backdrop-blur-sm"
           >
-            {project.category}
+            {cardCategory}
           </span>
         </div>
       </div>
@@ -74,29 +127,27 @@ function ProjectCard({
           style={{ fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.1 }}
           className="text-3xl font-semibold text-white"
         >
-          {project.title}
+          {cardTitle}
         </h3>
 
         <p
           style={{ fontFamily: "'DM Sans', sans-serif" }}
           className="text-sm leading-relaxed text-zinc-400 font-light line-clamp-2"
         >
-          {project.description}
+          {cardDescription}
         </p>
-
-        <div className="h-px bg-white/[0.06]" />
 
         <div className="flex items-center justify-between gap-4">
           <div className="flex flex-wrap gap-1.5">
-            {project.highlights.slice(0, 3).map((h) => (
+            {cardHighlights.slice(0, 3).map((h) => (
               <Tag key={h} label={h} />
             ))}
-            {project.highlights.length > 3 && (
+            {cardHighlights.length > 3 && (
               <span
                 style={{ fontFamily: "'DM Sans', sans-serif" }}
                 className="inline-flex items-center px-2 text-[11px] text-zinc-600"
               >
-                +{project.highlights.length - 3}
+                +{cardHighlights.length - 3}
               </span>
             )}
           </div>
@@ -105,7 +156,7 @@ function ProjectCard({
             style={{ fontFamily: "'DM Sans', sans-serif" }}
             className="flex-shrink-0 text-xs font-medium text-zinc-500 group-hover:text-zinc-300 transition-colors duration-200 flex items-center gap-1"
           >
-            Ver detalhes
+            {t.projects.detailsButton}
             <ArrowUpRight className="h-3 w-3" />
           </span>
         </div>
@@ -116,6 +167,7 @@ function ProjectCard({
 
 export default function Projects() {
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   return (
     <section id="projects" className="py-32 px-8">
@@ -135,16 +187,16 @@ export default function Projects() {
             style={{ fontFamily: "'DM Sans', sans-serif" }}
             className="text-[11px] font-medium tracking-[0.18em] uppercase text-zinc-500"
           >
-            Projetos
+            {t.projects.label}
           </span>
 
           <h2
             style={{ fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.0 }}
             className="text-5xl md:text-6xl font-semibold text-white mt-3 mb-16"
           >
-            Produtos que
+            {t.projects.titleLine1}
             <br />
-            <span className="italic font-light text-zinc-400">construí.</span>
+            <span className="italic font-light text-zinc-400">{t.projects.titleLine2}</span>
           </h2>
         </motion.div>
 

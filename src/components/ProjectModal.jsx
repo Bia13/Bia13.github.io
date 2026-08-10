@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink, Sparkles } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 import portfolio from "../data/portfolio";
+import { useLanguage } from "./LanguageContext";
 
 const EASE = [0.22, 1, 0.36, 1];
 
@@ -39,15 +40,50 @@ export default function ProjectModal() {
   const { slug } = useParams();
   const navigate = useNavigate();
 
+  const { t, locale } = useLanguage();
   const project = portfolio.projects.find((item) => item.slug === slug);
 
+  const localeProject = project?.translations?.[locale] || project;
+  const projectTitle = localeProject?.title || project?.title;
+  const projectCategory = localeProject?.category || project?.category;
+  const projectDescription = localeProject?.description || project?.description;
+  const projectHighlights = localeProject?.highlights || project?.highlights;
+  const projectLink = localeProject?.details?.link || project?.details?.link;
+  const projectDetails = {
+    overview:
+      localeProject?.details?.overview || project?.details?.overview,
+    problem: localeProject?.details?.problem || project?.details?.problem,
+    solution: localeProject?.details?.solution || project?.details?.solution,
+    role: localeProject?.details?.role || project?.details?.role,
+    workReduction:
+      localeProject?.details?.workReduction || project?.details?.workReduction,
+    metrics:
+      project?.details?.metrics?.map((metric, index) => ({
+        value: metric.value,
+        label:
+          localeProject?.details?.metrics?.[index]?.label || metric.label,
+        description:
+          localeProject?.details?.metrics?.[index]?.description ||
+          metric.description,
+      })) || [],
+    images:
+      localeProject?.details?.images?.length
+        ? localeProject?.details?.images
+        : project?.details?.images,
+  };
+
   useEffect(() => {
-    document.title = project ? `${project.title} | Beatriz Dantas` : "Beatriz Dantas";
-  }, [project]);
+    if (project) {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+      document.title = `${projectTitle} | Beatriz Dantas`;
+    } else {
+      document.title = "Beatriz Dantas";
+    }
+  }, [project, projectTitle]);
 
   if (!project) return null;
 
-  const images = project.details?.images?.length ? project.details.images : [project.image];
+  const images = projectDetails.images?.length ? projectDetails.images : [project.image];
 
   return (
     <div className="min-h-screen bg-zinc-950 text-white">
@@ -57,7 +93,7 @@ export default function ProjectModal() {
           className="inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-zinc-300 transition hover:bg-white/10"
         >
           <ArrowLeft className="h-4 w-4" />
-          Voltar para projetos
+          {t.projectModal.back}
         </button>
 
         <motion.div
@@ -72,19 +108,19 @@ export default function ProjectModal() {
                 style={{ fontFamily: "'DM Sans', sans-serif" }}
                 className="text-[11px] font-medium tracking-[0.18em] uppercase text-zinc-500"
               >
-                {project.category}
+                {projectCategory}
               </span>
               <h1
                 style={{ fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.05 }}
                 className="mt-3 text-4xl font-semibold text-white md:text-5xl"
               >
-                {project.title}
+                {projectTitle}
               </h1>
               <p
                 style={{ fontFamily: "'DM Sans', sans-serif" }}
                 className="mt-4 max-w-2xl text-[0.95rem] leading-relaxed text-zinc-400"
               >
-                {project.description}
+                {projectDescription}
               </p>
             </div>
 
@@ -101,22 +137,22 @@ export default function ProjectModal() {
             <div className="flex items-center gap-2 text-zinc-300">
               <Sparkles className="h-4 w-4" />
               <span style={{ fontFamily: "'DM Sans', sans-serif" }} className="text-[11px] font-medium uppercase tracking-[0.18em]">
-                Impacto e contexto
+                {t.projectModal.impact}
               </span>
             </div>
 
-            {project.details?.workReduction && (
+            {projectDetails.workReduction && (
               <div className="rounded-2xl border border-emerald-400/20 bg-emerald-400/10 p-4">
                 <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-emerald-300">
-                  Redução de trabalho
+                  {t.projectModal.reduction}
                 </p>
-                <p className="mt-2 text-lg text-white">{project.details.workReduction}</p>
+                <p className="mt-2 text-base text-white">{projectDetails.workReduction}</p>
               </div>
             )}
 
-            {project.details?.metrics?.length > 0 && (
+            {projectDetails.metrics.length > 0 && (
               <div className="grid gap-3 sm:grid-cols-2">
-                {project.details.metrics.map((metric) => (
+                {projectDetails.metrics.map((metric) => (
                   <div key={metric.label} className="rounded-2xl border border-white/10 bg-zinc-900/70 p-4">
                     <p className="text-[11px] uppercase tracking-[0.2em] text-zinc-500">{metric.label}</p>
                     <p className="mt-2 text-2xl font-semibold text-white">{metric.value}</p>
@@ -127,36 +163,37 @@ export default function ProjectModal() {
             )}
 
             <div className="space-y-3">
-              <Section title="Overview">{project.details?.overview}</Section>
-              <Section title="Problema">{project.details?.problem}</Section>
-              <Section title="Solução">{project.details?.solution}</Section>
-              <Section title="Meu papel">{project.details?.role}</Section>
+              <Section title={t.projectModal.category}>{projectCategory}</Section>
+              <Section title={t.projectModal.overview}>{projectDetails.overview}</Section>
+              <Section title={t.projectModal.problem}>{projectDetails.problem}</Section>
+              <Section title={t.projectModal.solution}>{projectDetails.solution}</Section>
+              <Section title={t.projectModal.role}>{projectDetails.role}</Section>
             </div>
 
-            {project.highlights?.length > 0 && (
+            {projectHighlights?.length > 0 && (
               <div>
                 <p
                   style={{ fontFamily: "'DM Sans', sans-serif" }}
                   className="mb-3 text-[11px] font-medium tracking-[0.18em] uppercase text-zinc-500"
                 >
-                  Tecnologias & entregas
+                  {t.projectModal.technologies}
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {project.highlights.map((item) => (
+                  {projectHighlights.map((item) => (
                     <Tag key={item} label={item} />
                   ))}
                 </div>
               </div>
             )}
 
-            {project.details?.link && (
+            {projectLink && (
               <a
-                href={project.details.link}
+                href={projectLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-white/10"
               >
-                Ver projeto
+                {t.projectModal.viewProject}
                 <ExternalLink className="h-4 w-4" />
               </a>
             )}
@@ -167,7 +204,7 @@ export default function ProjectModal() {
           <div className="flex items-center gap-3">
             <div className="h-px w-12 bg-white/20" />
             <p style={{ fontFamily: "'DM Sans', sans-serif" }} className="text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-500">
-              Telas e fluxos
+              {t.projectModal.screens}
             </p>
           </div>
 
@@ -180,7 +217,7 @@ export default function ProjectModal() {
                 transition={{ duration: 0.4, delay: index * 0.06 }}
                 className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-zinc-900"
               >
-                <img src={image} alt={`${project.title} - tela ${index + 1}`} className="h-full w-full object-cover" />
+                <img src={image} alt={`${projectTitle} - ${t.projectModal.screenAlt} ${index + 1}`} className="h-full w-full object-cover" />
               </motion.div>
             ))}
           </div>
