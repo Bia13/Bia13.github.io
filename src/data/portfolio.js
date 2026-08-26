@@ -53,6 +53,54 @@ Nos últimos projetos liderei a criação de plataformas SaaS, ferramentas para 
           "/projects/mamba-nexus-3.png",
         ],
       },
+      translations: {
+        en: {
+          title: "Mamba Nexus",
+          category: "AI Marketplace Platform",
+          description:
+            "Ecosystem for marketplace sellers with automations and AI.",
+          highlights: ["Branding", "UX/UI", "Design System", "AI", "Chatbot", "SaaS", "Desktop", "Mobile"],
+          details: {
+            overview:
+              "A complete platform for marketplace sellers, combining operational management, automations and an AI assistant to reduce everyday friction. The product was designed to bring scattered tasks into a single flow, focused on speed, clarity and confidence in execution.",
+            problem:
+              "Sellers had to switch between several tools to track orders, adjust pricing and respond to customers, which created rework and manual errors.",
+            solution:
+              "I created a centralized experience with dashboards, smart automations and integrated chat, allowing sellers to track operations and act faster in just a few clicks.",
+            role:
+              "Responsible for branding, UX, UI, design system and front-end, as well as structuring the product journey.",
+            workReduction:
+              "Reduced routine manual effort by around 60% for the operations and support teams.",
+            metrics: [
+              { label: "Execution time", description: "in operational task execution" },
+              { label: "Centralization", description: "more functions in a single experience" },
+            ],
+          },
+        },
+        es: {
+          title: "Mamba Nexus",
+          category: "AI Marketplace Platform",
+          description:
+            "Ecosistema para vendedores de marketplaces con automatizaciones e IA.",
+          highlights: ["Branding", "UX/UI", "Design System", "AI", "Chatbot", "SaaS", "Desktop", "Mobile"],
+          details: {
+            overview:
+              "Plataforma completa para vendedores de marketplaces, que combina gestión operativa, automatizaciones y un asistente con IA para reducir la fricción del día a día. El producto fue pensado para concentrar tareas dispersas en un único flujo, con foco en velocidad, claridad y confianza en la ejecución.",
+            problem:
+              "Los vendedores tenían que alternar entre varias herramientas para hacer seguimiento de pedidos, ajustar precios y responder a clientes, lo que generaba retrabajo y errores manuales.",
+            solution:
+              "Creé una experiencia centralizada con dashboards, automatizaciones inteligentes y chat integrado, permitiendo hacer seguimiento de las operaciones y actuar con más agilidad en pocos clics.",
+            role:
+              "Responsable de branding, UX, UI, design system y front-end, además de estructurar el recorrido del producto.",
+            workReduction:
+              "Redujo en cerca de un 60% el esfuerzo manual de rutina para los equipos de operaciones y soporte.",
+            metrics: [
+              { label: "Tiempo de ejecución", description: "en la ejecución de tareas operativas" },
+              { label: "Centralización", description: "más funciones en una única experiencia" },
+            ],
+          },
+        },
+      },
     },
 
     {
@@ -116,6 +164,29 @@ Nos últimos projetos liderei a criação de plataformas SaaS, ferramentas para 
             ],
           },
         },
+        es: {
+          title: "Nest Ops",
+          category: "Internal Operations Platform",
+          description:
+            "Sistema interno de CRM, dashboards y gestión operativa.",
+          highlights: ["CRM", "Dashboards", "UX/UI", "Data Analytics", "Desktop"],
+          details: {
+            overview:
+              "Solución de operación interna para equipos, que reúne dashboards analíticos, CRM y flujos de seguimiento para facilitar el análisis de datos y la toma de decisiones. El foco principal fue transformar información dispersa en una interfaz más clara para el día a día de la operación.",
+            problem:
+              "El equipo debía lidiar con datos fragmentados y muchas pantallas para hacer seguimiento a clientes e indicadores, lo que afectaba la velocidad de respuesta y la claridad del seguimiento.",
+            solution:
+              "Estructuré una interfaz de escritorio más coherente, con dashboards claros y flujos de CRM que hicieron la operación más previsible y menos dependiente de procesos improvisados.",
+            role:
+              "UX/UI y estructuración de dashboards y flujos, con foco en productividad y claridad operativa.",
+            workReduction:
+              "Eliminó gran parte del retrabajo de consulta manual y consolidó el seguimiento en un único entorno.",
+            metrics: [
+              { label: "Visión operativa", description: "más contexto en una única pantalla" },
+              { label: "Tiempo de análisis", description: "en la lectura de indicadores" },
+            ],
+          },
+        },
       },
     },
       {
@@ -154,6 +225,54 @@ Nos últimos projetos liderei a criação de plataformas SaaS, ferramentas para 
 
           "/projects/b2c-3.png",
         ],
+      },
+      translations: {
+        en: {
+          title: "B2C Sales Plus",
+          category: "Pharmaceutical Sales Platform",
+          description:
+            "Modernizing the sales experience for the pharmaceutical sector.",
+          highlights: ["UI/UX", "Smart POS", "Retail", "Desktop", "Product Design"],
+          details: {
+            overview:
+              "Solution used by pharmacy attendants and salespeople to guide the entire sales journey, from pre-sale to the customer's final checkout. The goal was to make selling more fluid, reliable and less dependent on improvised decisions at the point of sale.",
+            problem:
+              "The product had a fragmented, inconsistent experience, which made it harder to guide the sale and slowed down operations.",
+            solution:
+              "I refactored the end-to-end experience, simplifying flows, strengthening visual consistency and making the journey more intuitive for desktop and Smart POS.",
+            role:
+              "I led the complete refactor of the product experience, improving usability, flows and visual consistency for desktop and Smart POS.",
+            workReduction:
+              "Helped reduce reliance on manual guidance and made the sales process more intuitive for the team.",
+            metrics: [
+              { label: "Sales flow", description: "more fluidity in the sales journey" },
+              { label: "Consistency", description: "of key steps visually aligned" },
+            ],
+          },
+        },
+        es: {
+          title: "B2C Sales Plus",
+          category: "Pharmaceutical Sales Platform",
+          description:
+            "Modernización de la experiencia de ventas para el sector farmacéutico.",
+          highlights: ["UI/UX", "Smart POS", "Retail", "Desktop", "Product Design"],
+          details: {
+            overview:
+              "Solución utilizada por dependientes y vendedores para conducir todo el recorrido comercial, desde la preventa hasta el checkout final del consumidor. La propuesta fue hacer la venta más fluida, confiable y menos dependiente de decisiones improvisadas en el punto de venta.",
+            problem:
+              "El producto tenía una experiencia fragmentada y poco consistente, lo que dificultaba conducir la venta y generaba lentitud en la operación.",
+            solution:
+              "Refactoricé la experiencia de punta a punta, simplificando flujos, fortaleciendo la consistencia visual y haciendo el recorrido más intuitivo para escritorio y Smart POS.",
+            role:
+              "Lideré la refactorización completa de la experiencia del producto, mejorando la usabilidad, los flujos y la consistencia visual para escritorio y Smart POS.",
+            workReduction:
+              "Ayudó a reducir la dependencia de orientaciones manuales e hizo el proceso de venta más intuitivo para el equipo.",
+            metrics: [
+              { label: "Flujo de venta", description: "más fluidez en el recorrido comercial" },
+              { label: "Consistencia", description: "de los pasos principales alineados visualmente" },
+            ],
+          },
+        },
       },
     },
     {
@@ -195,6 +314,54 @@ Nos últimos projetos liderei a criação de plataformas SaaS, ferramentas para 
           "/projects/cosmos2.png",
           "/projects/cosmos3.png",
         ],
+      },
+      translations: {
+        en: {
+          title: "Cosmos Pro",
+          category: "Enterprise Mobile Platform",
+          description:
+            "Corporate app with multiple features for business operations.",
+          highlights: ["Mobile", "UX/UI", "Product Design", "Enterprise"],
+          details: {
+            overview:
+              "App developed for companies that need to bring together different services and processes into a single mobile experience. The goal was to create a clearer, more scalable foundation for recurring business operations.",
+            problem:
+              "Navigation wasn't aligned with real usage needs, making it harder to find services and increasing friction in the experience.",
+            solution:
+              "I refactored the information architecture, navigation and interface to make the app more intuitive and efficient for daily use.",
+            role:
+              "Responsible for refactoring the mobile experience, navigation improvements, information architecture and interface.",
+            workReduction:
+              "Reduced navigation time and made access to key actions more direct for users.",
+            metrics: [
+              { label: "Quick access", description: "in time to find key services" },
+              { label: "Consistency", description: "more visual standardization across screens" },
+            ],
+          },
+        },
+        es: {
+          title: "Cosmos Pro",
+          category: "Enterprise Mobile Platform",
+          description:
+            "Aplicación corporativa con múltiples funcionalidades para operaciones empresariales.",
+          highlights: ["Mobile", "UX/UI", "Product Design", "Enterprise"],
+          details: {
+            overview:
+              "Aplicación desarrollada para empresas que necesitan concentrar diferentes servicios y procesos en una única experiencia móvil. El objetivo fue crear una base más clara y escalable para operaciones empresariales recurrentes.",
+            problem:
+              "La navegación no estaba alineada con las necesidades reales de uso, lo que dificultaba encontrar servicios y aumentaba la fricción de la experiencia.",
+            solution:
+              "Refactoricé la arquitectura de la información, la navegación y la interfaz para hacer la app más intuitiva y eficiente en el uso diario.",
+            role:
+              "Responsable de la refactorización de la experiencia móvil, mejoras de navegación, arquitectura de la información e interfaz.",
+            workReduction:
+              "Redujo el tiempo de navegación e hizo el acceso a las acciones principales más directo para los usuarios.",
+            metrics: [
+              { label: "Acceso rápido", description: "en el tiempo para encontrar servicios principales" },
+              { label: "Consistencia", description: "más estandarización visual entre pantallas" },
+            ],
+          },
+        },
       },
     },
     {
@@ -239,6 +406,54 @@ Nos últimos projetos liderei a criação de plataformas SaaS, ferramentas para 
         "/projects/mmc1.png",
       ],
     },
+    translations: {
+      en: {
+        title: "MMC Web",
+        category: "Procurement Intelligence Platform",
+        description:
+          "Platform to support strategic corporate procurement decisions.",
+        highlights: ["Procurement", "UX/UI", "Data Visualization", "Enterprise", "Desktop"],
+        details: {
+          overview:
+            "System built to support procurement teams in data analysis and strategic decision-making, offering indicators and negotiation support tools. The challenge was turning a cluttered interface into a platform that makes decisions easier.",
+          problem:
+            "Teams needed to interpret large amounts of data and quickly find the most relevant points for negotiation, but the interface made that reading difficult.",
+          solution:
+            "I modernized the interface, reorganized the main flows and prioritized indicator visualization to speed up understanding and decision-making.",
+          role:
+            "I modernized the product by refactoring the interface, improving the user experience and reorganizing the main flows.",
+          workReduction:
+            "Helped reduce the need for manual validation and made analysis more straightforward for the team.",
+          metrics: [
+            { label: "Data reading", description: "in the interpretation learning curve" },
+            { label: "Faster decisions", description: "more speed in analysis" },
+          ],
+        },
+      },
+      es: {
+        title: "MMC Web",
+        category: "Procurement Intelligence Platform",
+        description:
+          "Plataforma para apoyar decisiones estratégicas de compras corporativas.",
+        highlights: ["Procurement", "UX/UI", "Data Visualization", "Enterprise", "Desktop"],
+        details: {
+          overview:
+            "Sistema creado para apoyar a los equipos de compras en el análisis de datos y la toma de decisiones estratégicas, ofreciendo indicadores y herramientas de apoyo a la negociación. El desafío era transformar una interfaz sobrecargada en una plataforma que facilitara la decisión.",
+          problem:
+            "Los equipos necesitaban interpretar muchos datos y encontrar rápidamente los puntos más relevantes para la negociación, pero la interfaz dificultaba esa lectura.",
+          solution:
+            "Modernicé la interfaz, reorganicé los flujos principales y prioricé la visualización de indicadores para acelerar la comprensión y la toma de decisiones.",
+          role:
+            "Trabajé en la modernización del producto a través de la refactorización de la interfaz, la mejora de la experiencia del usuario y la reorganización de los flujos principales.",
+          workReduction:
+            "Ayudó a reducir la necesidad de validaciones manuales e hizo el análisis más directo para el equipo.",
+          metrics: [
+            { label: "Lectura de datos", description: "en la curva de interpretación" },
+            { label: "Decisiones rápidas", description: "más velocidad en el análisis" },
+          ],
+        },
+      },
+    },
   },
 
     {
@@ -278,6 +493,54 @@ Nos últimos projetos liderei a criação de plataformas SaaS, ferramentas para 
           "/projects/design-system-2.png",
           "/projects/design-system-3.png",
         ],
+      },
+      translations: {
+        en: {
+          title: "Design Systems",
+          category: "Scalable Design System",
+          description:
+            "Scalable design system with tokens, components and documentation.",
+          highlights: ["Figma", "Tokens", "Components", "Docs", "Style Guide"],
+          details: {
+            overview:
+              "Creation and documentation of design systems — tokens, components, guidelines and reusable libraries to ensure visual consistency and agility in product development. The goal was to reduce rework and strengthen scalability across teams.",
+            problem:
+              "Visual consistency and delivery speed were impacted by inconsistencies between components and a lack of standardization across projects.",
+            solution:
+              "I structured a scalable design system with tokens, components and clear documentation, making maintenance easier and speeding up the creation of new interfaces.",
+            role:
+              "Design system creation and documentation.",
+            workReduction:
+              "Helped reduce design and development rework and sped up delivery of new screens.",
+            metrics: [
+              { label: "Standardization", description: "more consistency across products" },
+              { label: "Speed", description: "in creating new interfaces" },
+            ],
+          },
+        },
+        es: {
+          title: "Design Systems",
+          category: "Scalable Design System",
+          description:
+            "Sistema de diseño escalable con tokens, componentes y documentación.",
+          highlights: ["Figma", "Tokens", "Components", "Docs", "Style Guide"],
+          details: {
+            overview:
+              "Creación y documentación de sistemas de diseño — tokens, componentes, guías y bibliotecas reutilizables para garantizar consistencia visual y agilidad en el desarrollo de productos. La propuesta fue reducir el retrabajo y fortalecer la escalabilidad entre equipos.",
+            problem:
+              "La consistencia visual y la velocidad de entrega se veían afectadas por inconsistencias entre componentes y falta de estandarización entre proyectos.",
+            solution:
+              "Estructuré un sistema de diseño escalable con tokens, componentes y documentación clara, facilitando el mantenimiento y acelerando la creación de nuevas interfaces.",
+            role:
+              "Creación del sistema de diseño y documentación.",
+            workReduction:
+              "Ayudó a reducir el retrabajo de diseño y desarrollo y aceleró la entrega de nuevas pantallas.",
+            metrics: [
+              { label: "Estandarización", description: "más consistencia entre productos" },
+              { label: "Velocidad", description: "en la creación de nuevas interfaces" },
+            ],
+          },
+        },
       },
     },
   ],

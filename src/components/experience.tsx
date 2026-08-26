@@ -20,6 +20,30 @@ const experiences = [
       "Mapeamento e otimização de jornadas, melhorando usabilidade e eficiência das interfaces",
       "Redesign e evolução contínua dos produtos, garantindo consistência e qualidade da experiência",
     ],
+    translations: {
+      en: {
+        role: "Product Designer (Mid-level)",
+        period: "Jan 2026 — Present",
+        description: [
+          "Defining and evolving the products' visual identity and Design System",
+          "End-to-end UI/UX mobile work, from discovery to delivery, focused on intuitive, user-centered solutions",
+          "Conducting qualitative and quantitative research",
+          "Mapping and optimizing journeys, improving interface usability and efficiency",
+          "Ongoing product redesign and evolution, ensuring consistency and quality of the experience",
+        ],
+      },
+      es: {
+        role: "Product Designer (Nivel intermedio)",
+        period: "Ene 2026 — Actual",
+        description: [
+          "Definición y evolución de la identidad visual y el Design System de los productos",
+          "Trabajo end-to-end en UI/UX móvil, desde el discovery hasta la entrega, con foco en soluciones intuitivas y centradas en el usuario",
+          "Conducción de investigaciones cualitativas y cuantitativas",
+          "Mapeo y optimización de recorridos, mejorando la usabilidad y eficiencia de las interfaces",
+          "Rediseño y evolución continua de los productos, garantizando consistencia y calidad de la experiencia",
+        ],
+      },
+    },
   },
   {
     company: "Mamba Digital",
@@ -32,6 +56,30 @@ const experiences = [
       "Apoio em pesquisas de usuário, testes de usabilidade e análise de métricas para otimização contínua das interfaces",
       "Atuação integrada com desenvolvimento (dailys, handoff e validação técnica de protótipos), reduzindo retrabalho e ciclos de ajuste",
     ],
+    translations: {
+      en: {
+        role: "UI/UX Design Assistant",
+        period: "Jul 2025 — Jan 2026",
+        description: [
+          "Responsible for creating interfaces, interactive prototypes and navigation flows",
+          "Structuring design systems from scratch, ensuring standardization, scalability and alignment with development",
+          "Collaborating with product and development teams to define and deliver solutions",
+          "Supporting user research, usability testing and metrics analysis for continuous interface optimization",
+          "Working closely with development (dailies, handoff and technical validation of prototypes), reducing rework and adjustment cycles",
+        ],
+      },
+      es: {
+        role: "Asistente de Diseño UI/UX",
+        period: "Jul 2025 — Ene 2026",
+        description: [
+          "Responsable de la creación de interfaces, prototipos interactivos y flujos de navegación",
+          "Estructuración de design systems desde cero, garantizando estandarización, escalabilidad y alineación con desarrollo",
+          "Colaboración con producto y desarrollo en la definición y entrega de las soluciones",
+          "Apoyo en investigaciones de usuario, pruebas de usabilidad y análisis de métricas para la optimización continua de las interfaces",
+          "Trabajo integrado con desarrollo (dailies, handoff y validación técnica de prototipos), reduciendo retrabajo y ciclos de ajuste",
+        ],
+      },
+    },
   },
   {
     company: "Mamba Digital",
@@ -42,6 +90,26 @@ const experiences = [
       "Implementação front-end com HTML, CSS, JavaScript, React e Tailwind",
       "Apoio em melhorias de interfaces e experiência do usuário",
     ],
+    translations: {
+      en: {
+        role: "Graphic Design & Front-end Assistant",
+        period: "Jan 2025 — Jun 2025",
+        description: [
+          "Creating assets for marketplaces and product pages",
+          "Front-end implementation with HTML, CSS, JavaScript, React and Tailwind",
+          "Supporting interface and user experience improvements",
+        ],
+      },
+      es: {
+        role: "Asistente de Diseño Gráfico y Front-end",
+        period: "Ene 2025 — Jun 2025",
+        description: [
+          "Creación de piezas para marketplaces y páginas de producto",
+          "Implementación front-end con HTML, CSS, JavaScript, React y Tailwind",
+          "Apoyo en mejoras de interfaces y experiencia de usuario",
+        ],
+      },
+    },
   },
   {
     company: "Mamba Digital",
@@ -51,6 +119,24 @@ const experiences = [
       "Criação de peças para marketplaces",
       "Design gráfico e identidade visual",
     ],
+    translations: {
+      en: {
+        role: "Graphic Design Intern",
+        period: "Sep 2024 — Jan 2025",
+        description: [
+          "Creating assets for marketplaces",
+          "Graphic design and visual identity",
+        ],
+      },
+      es: {
+        role: "Pasante de Diseño Gráfico",
+        period: "Sep 2024 — Ene 2025",
+        description: [
+          "Creación de piezas para marketplaces",
+          "Diseño gráfico e identidad visual",
+        ],
+      },
+    },
   },
 ];
 
@@ -79,7 +165,11 @@ function ExperienceCard({
   exp: (typeof experiences)[0];
   index: number;
 }) {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
+  const localized = exp.translations?.[locale as "en" | "es"];
+  const role = localized?.role ?? exp.role;
+  const period = localized?.period ?? exp.period;
+  const description = localized?.description ?? exp.description;
 
   return (
     <motion.div
@@ -100,7 +190,7 @@ function ExperienceCard({
               style={{ fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.1 }}
               className="text-2xl md:text-3xl font-semibold text-white"
             >
-              {exp.role}
+              {role}
             </h3>
             <p
               style={{ fontFamily: "'DM Sans', sans-serif" }}
@@ -122,7 +212,7 @@ function ExperienceCard({
               style={{ fontFamily: "'DM Sans', sans-serif" }}
               className="text-[11px] font-medium tracking-wide text-zinc-600 tabular-nums"
             >
-              {exp.period}
+              {period}
             </span>
           </div>
         </div>
@@ -132,7 +222,7 @@ function ExperienceCard({
 
         {/* description */}
         <ul className="space-y-2.5">
-          {exp.description.map((item) => (
+          {description.map((item) => (
             <li
               key={item}
               style={{ fontFamily: "'DM Sans', sans-serif" }}

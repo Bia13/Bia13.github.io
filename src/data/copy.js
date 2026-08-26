@@ -6,7 +6,6 @@ export const translations = {
       projects: "Projetos",
       gallery: "Galeria",
       experience: "Experiência",
-      skills: "Skills",
       contact: "Contato",
     },
     hero: {
@@ -20,6 +19,7 @@ export const translations = {
         { value: "35+", label: "projetos entregues" },
         { value: "B2B", label: "SaaS & Marketplaces" },
       ],
+      imageError: "hero.png não encontrada",
     },
     about: {
       label: "Sobre",
@@ -41,6 +41,11 @@ export const translations = {
         intermediário: "Intermediário",
         básico: "Básico",
       },
+      languageNames: {
+        pt: "Português",
+        en: "Inglês",
+        es: "Espanhol",
+      },
     },
     projects: {
       label: "Projetos",
@@ -60,24 +65,6 @@ export const translations = {
       titleLine1: "Minha",
       titleLine2: "trajetória.",
       currentLabel: "Atual",
-    },
-    skills: {
-      label: "Skills",
-      titleLine1: "Ferramentas e",
-      titleLine2:
-        "tecnologias que uso no meu fluxo de trabalho — do conceito à entrega.",
-      categories: {
-        design: "Design",
-        dev: "Dev",
-        workflow: "Workflow",
-      },
-      levelLabels: {
-        nativo: "Nativo",
-        profissional: "Profissional",
-        avançado: "Avançado",
-        intermediário: "Intermediário",
-        básico: "Básico",
-      },
     },
     contact: {
       label: "Contato",
@@ -104,6 +91,8 @@ export const translations = {
       screens: "Telas e fluxos",
       category: "Categoria",
       screenAlt: "tela",
+      previousScreen: "Tela anterior",
+      nextScreen: "Próxima tela",
     },
   },
   en: {
@@ -113,7 +102,6 @@ export const translations = {
       projects: "Projects",
       gallery: "Gallery",
       experience: "Experience",
-      skills: "Skills",
       contact: "Contact",
     },
     hero: {
@@ -149,6 +137,11 @@ export const translations = {
         intermediário: "Intermediate",
         básico: "Basic",
       },
+      languageNames: {
+        pt: "Portuguese",
+        en: "English",
+        es: "Spanish",
+      },
     },
     projects: {
       label: "Projects",
@@ -168,24 +161,6 @@ export const translations = {
       titleLine1: "My",
       titleLine2: "journey.",
       currentLabel: "Current",
-    },
-    skills: {
-      label: "Skills",
-      titleLine1: "Tools and",
-      titleLine2:
-        "technologies I use in my workflow — from concept to delivery.",
-      categories: {
-        design: "Design",
-        dev: "Dev",
-        workflow: "Workflow",
-      },
-      levelLabels: {
-        nativo: "Native",
-        profissional: "Professional",
-        avançado: "Advanced",
-        intermediário: "Intermediate",
-        básico: "Basic",
-      },
     },
     contact: {
       label: "Contact",
@@ -212,6 +187,104 @@ export const translations = {
       screens: "Screens and flows",
       category: "Category",
       screenAlt: "screen",
+      previousScreen: "Previous screen",
+      nextScreen: "Next screen",
+    },
+  },
+  es: {
+    nav: {
+      home: "Inicio",
+      about: "Sobre mí",
+      projects: "Proyectos",
+      gallery: "Galería",
+      experience: "Experiencia",
+      contact: "Contacto",
+    },
+    hero: {
+      available: "Disponible para proyectos",
+      description:
+        "Transformando procesos complejos en productos digitales intuitivos, escalables y orientados a resultados.",
+      ctaProjects: "Ver Proyectos",
+      behance: "Behance",
+      stats: [
+        { value: "5+", label: "años de experiencia" },
+        { value: "35+", label: "proyectos entregados" },
+        { value: "B2B", label: "SaaS & Marketplaces" },
+      ],
+      imageError: "hero.png no encontrada",
+    },
+    about: {
+      label: "Sobre mí",
+      titleLine1: "Diseño, producto",
+      titleLine2: "y tecnología.",
+      bio1:
+        "Product Designer con experiencia en SaaS, marketplaces y productos digitales B2B. Trabajo de forma end-to-end, desde el discovery e investigación con usuarios hasta design systems, prototipado e implementación front-end.",
+      bio2:
+        "A lo largo de mi trayectoria participé en la construcción de plataformas operativas, herramientas para marketplaces, soluciones con inteligencia artificial y sistemas escalables, siempre buscando equilibrar los objetivos de negocio, la experiencia del usuario y la viabilidad técnica.",
+      categories: {
+        tech: "Tecnología e interfaces",
+        design: "Diseño y creación",
+        languages: "Idiomas",
+      },
+      levelLabels: {
+        nativo: "Nativo",
+        profissional: "Profesional",
+        avançado: "Avanzado",
+        intermediário: "Intermedio",
+        básico: "Básico",
+      },
+      languageNames: {
+        pt: "Portugués",
+        en: "Inglés",
+        es: "Español",
+      },
+    },
+    projects: {
+      label: "Proyectos",
+      titleLine1: "Productos que",
+      titleLine2: "construí.",
+      detailsButton: "Ver detalles",
+    },
+    gallery: {
+      label: "Galería",
+      titleLine1: "Artes de",
+      titleLine2: "diseño gráfico.",
+      previous: "Arte anterior",
+      next: "Arte siguiente",
+    },
+    experience: {
+      label: "Experiencia",
+      titleLine1: "Mi",
+      titleLine2: "trayectoria.",
+      currentLabel: "Actual",
+    },
+    contact: {
+      label: "Contacto",
+      titleLine1: "Construyamos",
+      titleLine2: "algo increíble.",
+      description:
+        "Abierta a oportunidades en Product Design, UX/UI y Front-end. Envíame un mensaje o revisa mis perfiles profesionales abajo.",
+      linkedin: "LinkedIn",
+      email: "Email",
+      github: "Github",
+      behance: "Behance",
+      backToTop: "Volver arriba",
+    },
+    projectModal: {
+      back: "Volver a proyectos",
+      impact: "Impacto y contexto",
+      reduction: "Reducción de trabajo",
+      technologies: "Tecnologías y entregables",
+      viewProject: "Ver proyecto",
+      overview: "Resumen",
+      problem: "Problema",
+      solution: "Solución",
+      role: "Mi rol",
+      screens: "Pantallas y flujos",
+      category: "Categoría",
+      screenAlt: "pantalla",
+      previousScreen: "Pantalla anterior",
+      nextScreen: "Pantalla siguiente",
     },
   },
 };

@@ -161,6 +161,7 @@ function StatsRow() {
 
 function PhotoCard() {
   const [err, setErr] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <motion.div
@@ -184,12 +185,12 @@ function PhotoCard() {
               style={{ fontFamily: "'DM Sans', sans-serif" }}
               className="text-xs text-zinc-700"
             >
-              hero.png não encontrada
+              {t.hero.imageError}
             </span>
           </div>
         ) : (
           <img
-            src="./projects/hero.png"
+            src="./src/assets/hero.png"
             alt="Beatriz Dantas — Product Designer"
             onError={() => setErr(true)}
             className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.04]"

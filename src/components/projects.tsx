@@ -22,21 +22,7 @@ type Project = {
     link?: string;
   };
   translations?: {
-    pt?: {
-      title?: string;
-      category?: string;
-      description?: string;
-      highlights?: string[];
-      details?: {
-        overview?: string;
-        problem?: string;
-        solution?: string;
-        role?: string;
-        workReduction?: string;
-        metrics?: { label?: string; description?: string }[];
-      };
-    };
-    en?: {
+    [locale in "pt" | "en" | "es"]?: {
       title?: string;
       category?: string;
       description?: string;
@@ -76,8 +62,7 @@ function ProjectCard({
   onOpen: () => void;
 }) {
   const { t, locale } = useLanguage();
-  const localeKey = locale === "en" ? "en" : "pt";
-  const localeProject = project.translations?.[localeKey] || project;
+  const localeProject = project.translations?.[locale as "pt" | "en" | "es"] || project;
   const cardTitle = localeProject.title || project.title;
   const cardCategory = localeProject.category || project.category;
   const cardDescription = localeProject.description || project.description;
@@ -96,7 +81,9 @@ function ProjectCard({
       aria-label={
         locale === "en"
           ? `View details of ${cardTitle}`
-          : `Ver detalhes de ${cardTitle}`
+          : locale === "es"
+            ? `Ver detalles de ${cardTitle}`
+            : `Ver detalhes de ${cardTitle}`
       }
       className="
         group relative overflow-hidden

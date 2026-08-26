@@ -16,7 +16,8 @@ const LEVELS = {
 type Level = keyof typeof LEVELS;
 
 interface Skill {
-  name: string;
+  name?: string;
+  langKey?: "pt" | "en" | "es";
   level: Level;
 }
 
@@ -54,9 +55,9 @@ const categories: Category[] = [
     label: "languages",
     color: "#7F77DD",
     items: [
-      { name: "Português", level: "nativo"       },
-      { name: "Inglês",    level: "profissional" },
-      { name: "Espanhol",  level: "básico"       },
+      { langKey: "pt", level: "nativo"       },
+      { langKey: "en", level: "profissional" },
+      { langKey: "es", level: "básico"       },
     ],
   },
 ];
@@ -65,6 +66,7 @@ const categories: Category[] = [
 
 function SkillCard({
   name,
+  langKey,
   level,
   color,
   index,
@@ -72,6 +74,7 @@ function SkillCard({
   const { t } = useLanguage();
   const dots = LEVELS[level].dots;
   const label = t.about.levelLabels[level];
+  const displayName = langKey ? t.about.languageNames[langKey] : name;
   const pct = dots === 5 ? "97%" : dots === 4 ? "80%" : dots === 3 ? "55%" : "25%";
 
   return (
@@ -92,7 +95,7 @@ function SkillCard({
         style={{ fontFamily: "'DM Sans', sans-serif" }}
         className="mb-1 text-sm font-medium text-zinc-100"
       >
-        {name}
+        {displayName}
       </p>
       <p
         style={{ fontFamily: "'DM Sans', sans-serif" }}
@@ -143,7 +146,7 @@ function CategoryBlock({ cat, catIndex }: { cat: Category; catIndex: number }) {
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
         {cat.items.map((skill, i) => (
           <SkillCard
-            key={skill.name}
+            key={skill.name ?? skill.langKey}
             {...skill}
             color={cat.color}
             index={i}

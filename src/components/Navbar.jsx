@@ -6,8 +6,13 @@ const sections = [
   { id: "projects", labelKey: "projects" },
   { id: "gallery", labelKey: "gallery" },
   { id: "experience", labelKey: "experience" },
-  { id: "skills", labelKey: "skills" },
   { id: "contact", labelKey: "contact" },
+];
+
+const locales = [
+  { code: "pt", label: "PT" },
+  { code: "en", label: "EN" },
+  { code: "es", label: "ES" },
 ];
 
 export default function Navbar() {
@@ -40,13 +45,23 @@ export default function Navbar() {
           </nav>
         </div>
 
-        <button
-          type="button"
-          onClick={() => setLocale(locale === "pt" ? "en" : "pt")}
-          className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition hover:border-white/20 hover:bg-white/10"
-        >
-          {locale === "pt" ? "EN" : "PT"}
-        </button>
+        <div className="flex items-center gap-1 rounded-full border border-white/10 bg-white/5 p-1">
+          {locales.map((l) => (
+            <button
+              key={l.code}
+              type="button"
+              onClick={() => setLocale(l.code)}
+              aria-current={locale === l.code}
+              className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${
+                locale === l.code
+                  ? "bg-white text-black"
+                  : "text-zinc-400 hover:text-white"
+              }`}
+            >
+              {l.label}
+            </button>
+          ))}
+        </div>
       </div>
     </header>
   );
