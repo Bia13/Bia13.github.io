@@ -97,7 +97,7 @@ export const translations = {
   },
   en: {
     nav: {
-      home: "Home",
+      home: "Bia",
       about: "About",
       projects: "Projects",
       gallery: "Gallery",
@@ -193,7 +193,7 @@ export const translations = {
   },
   es: {
     nav: {
-      home: "Inicio",
+      home: "Bia",
       about: "Sobre mí",
       projects: "Proyectos",
       gallery: "Galería",
