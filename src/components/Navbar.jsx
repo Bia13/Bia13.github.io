@@ -1,6 +1,7 @@
 import { useLanguage } from "./LanguageContext";
 
 const sections = [
+  { id:"bia", labelKey:"bia"},
   { id: "top", labelKey: "home" },
   { id: "about", labelKey: "about" },
   { id: "projects", labelKey: "projects" },
@@ -28,9 +29,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-zinc-950/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
         <div className="flex items-center gap-4">
-          <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white shadow-sm shadow-black/20">
-            Bia
-          </div>
+          
           <nav className="hidden items-center gap-3 md:flex" aria-label="Main navigation">
             {sections.map((section) => (
               <button

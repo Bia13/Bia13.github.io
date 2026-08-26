@@ -1,7 +1,7 @@
 export const translations = {
   pt: {
     nav: {
-      home: "Início",
+      home: "Bia",
       about: "Sobre",
       projects: "Projetos",
       gallery: "Galeria",
