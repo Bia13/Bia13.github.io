@@ -190,7 +190,7 @@ function PhotoCard() {
           </div>
         ) : (
           <img
-            src="./src/assets/hero.png"
+            src="/projects/hero.png"
             alt="Beatriz Dantas — Product Designer"
             onError={() => setErr(true)}
             className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.04]"
