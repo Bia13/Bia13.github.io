@@ -56,7 +56,7 @@ const categories: Category[] = [
     color: "#7F77DD",
     items: [
       { langKey: "pt", level: "nativo"       },
-      { langKey: "en", level: "profissional" },
+      { langKey: "en", level: "avançado" },
       { langKey: "es", level: "básico"       },
     ],
   },
